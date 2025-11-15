@@ -1,0 +1,23 @@
+                                                                          //Iteration
+#include <stdio.h>
+		#include<math.h>
+double f(double x, double y) {
+    return x + y;  // Example: y' = x + y
+}
+
+void modifiedEuler(double x0, double y0, double h, double xn) {
+    double x = x0, y = y0;
+    while (x < xn) {
+        double k1 = f(x, y);
+        double k2 = f(x + h, y + h * k1);
+        y = y + (h / 2) * (k1 + k2);
+        x = x + h;
+        printf("x = %.2f, y = %.4f\n", x, y);
+    }
+}
+
+void main() {
+    double x0 = 0, y0 = 1, h = 0.2, xn = 1;
+    modifiedEuler(x0, y0, h, xn);
+    return 0;
+}
